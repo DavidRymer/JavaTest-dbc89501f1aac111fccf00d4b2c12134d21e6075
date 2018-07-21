@@ -62,6 +62,45 @@ public class PointOfInterest {
 		this.damage = damage;
 	}
 	
+	public String treasureDirection(int x, int y) {
+		
+		String dirx = "";
+		String diry = "";
+		
+		if (xCoordPoint - x > 0) {
+			
+			dirx = "west";
+		}
+		
+		else if (xCoordPoint - x < 0) {
+			
+			dirx = "east";
+		}
+		
+		if (yCoordPoint - y > 0) {
+			
+			diry = "south";
+		}
+		
+		else if (yCoordPoint - y < 0) {
+			
+			diry = "north";
+		}
+		
+		if (dirx.equals("")) {
+			
+			return diry;
+		}
+		
+		if (diry.equals("")) {
+			
+			return dirx;
+		}
+		
+		return diry + " "+ dirx;
+		
+	}
+	
 
 
 }
