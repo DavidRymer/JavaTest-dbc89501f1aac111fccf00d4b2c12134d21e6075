@@ -48,6 +48,7 @@ public class Main {
 
 				points[i].setxCoordPoint(newx1);
 				points[i].setyCoordPoint(newy1);
+				System.out.println("poi coordinates are: (" + points[i].getxCoordPoint() +", " +points[i].getyCoordPoint()+")" + i);
 
 			}
 		}
@@ -66,16 +67,17 @@ public class Main {
 		
 		int rnd1;
 		double rnd; 
-		boolean end = false;
+		boolean end = true;
 
 		while (tony.getHealth() > 0) { 
 
 			String dir = direction.nextLine();
 			tony.move(dir);
-			System.out.println("You are at (" + tony.getxCoordPlayer() +", " + tony.getyCoordPlayer() + ")." );
+			System.out.println("You are at (" + tony.getxCoordPlayer() +", " + tony.getyCoordPlayer() + ")." );		
 
             rnd = 10 * Math.random();
 			rnd1 = (int) rnd;
+			rnd1 = 3;
 
 			if ((dir.equals("north") == false && dir.equals("n") == false) && 
 					(dir.equals("east") == false && dir.equals("e") == false)
@@ -83,8 +85,6 @@ public class Main {
 					&& (dir.equals("west") == false && (dir.equals("w") == false))) {
 
 				System.out.println("To navigate, try north, east, south or west.");
-				end = true;
-				
 			}
 			else {
 
@@ -92,14 +92,18 @@ public class Main {
 			}
 
 			for (int i = 0; i < points.length; i++) {
+				System.out.println(points[i].getxCoordPoint() +", " +points[i].getyCoordPoint()+ "increment: " + i);
+				
 				
 				if      (tony.getxCoordPlayer() == points[i].getxCoordPoint() &&
 						tony.getyCoordPlayer() == points[i].getyCoordPoint()) {
-
+					
+                    
 					System.out.println(points[i].getMessage());
 					tony.setHealth(tony.getHealth()-points[i].getDamage());
 					points[i].setxCoordPoint(500+i);
 					points[i].setyCoordPoint(500-i);
+					end = true;
 					break;
 
 				}
@@ -111,15 +115,19 @@ public class Main {
 
 						System.out.println("An evil chicken randomly appears! It attacks you for 4 damage");
 						tony.setHealth(tony.getHealth()-4);
-						break;
+						end = true;
+
 					}
 
 					else if (rnd1 == 3 && end != true) {
 
 						System.out.println("Jesus falls out of the sky and heals you for 5 health! Praise the lord!");
 						tony.setHealth(tony.getHealth()+5);
-						break;
-					}	
+						end = true;
+
+
+					}
+											
 				}
 			}
 			
