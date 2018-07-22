@@ -49,21 +49,21 @@ public class Player {
 
 	public void move(String direction) {
 
-		if (direction.equals("north")) {
+		if (direction.equals("north") || direction.equals("n")) {
 
 			setyCoordPlayer(getyCoordPlayer() + 1);
 		}
 
-		else if (direction.equals("east")) {
+		else if (direction.equals("east") || direction.equals("e")) {
 
 			setxCoordPlayer(getxCoordPlayer() + 1);
 		}
-		else if (direction.equals("south")) {
+		else if (direction.equals("south") || direction.equals("s")) {
 
 			setyCoordPlayer(getyCoordPlayer() - 1);
 		} 
 
-		else if (direction.equals("west")) {
+		else if (direction.equals("west") || direction.equals("w")) {
 
 			setxCoordPlayer(getxCoordPlayer() - 1);
 		}
